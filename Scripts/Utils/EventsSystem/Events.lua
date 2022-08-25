@@ -28,14 +28,18 @@ function FireEvent(Name, Time)
     end
 end
 
-function Event(Name, Callback, Once, Time)
+function Event(Name, Callback, Repeat, Time)
     if type(Name) ~= "string" then assert(false, "EventName must be a string!") return end
     if type(Callback) ~= "function" then assert(false, "Callback must be a function!") return end
-    if type(Once) ~= "boolean" then Once = false end
+    if type(Repeat) ~= "boolean" then Repeat = false end
     if type(Time) ~= "number" then Time = 0 end
     local Target = sm.isServerMode() and ServerEvents or ClientEvents
     if not Target[Name] then
         Target[Name] = {}
     end
-    table.insert(Target[Name], { Callback, Once, Time })
+    table.insert(Target[Name], { Callback, Repeat, Time })
 end
+
+--[[
+    Should implement some sort of way to remove looping events.
+]]

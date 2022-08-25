@@ -39,23 +39,3 @@ function Unauthorise(id) -- This should be server only.
 	if not VaildateNetwork("UtilsNetwork",{},{ServerOnly=true}) then return end
 	AuthorisedIds[id] = nil
 end
-
---[[
-Example!
-
-function Class.Server_Function(self,firstvariable,secondvariable)
-    if not VaildateNetwork("Server_Function",secondvariable,true,false) then return end
-    print("any client may call this function.")
-end
-
-function Class.Server_Function2(self,firstvariable,secondvariable)
-    if not VaildateNetwork("Server_Function2",secondvariable,true,true) then return end
-    print("only trusted client may call this function.")
-end
-
-function Class.Client_Function(self,firstvariable,secondvariable)
-    if not VaildateNetwork("Client_Function",secondvariable,false,nil) then return end
-    print("only the server should call this.")
-end
-
-]]
